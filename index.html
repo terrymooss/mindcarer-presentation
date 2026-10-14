@@ -35,6 +35,7 @@ background:linear-gradient(rgba(248,250,248,.88),rgba(248,250,248,.7));backdrop-
 .hint{font-size:12px;opacity:.6;white-space:nowrap}
 .shint{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:40;font-size:13px;font-weight:600;color:var(--forest);background:rgba(255,255,255,.85);padding:8px 16px;border-radius:99px;transition:opacity .6s;pointer-events:none}
 .mode-show .shint,.shint.gone{opacity:0}
+.shint.nh{opacity:1!important}
 .mode-show.idle .top{transform:translateY(-100%);opacity:0}.mode-show.idle .dock{transform:translate(-50%,140%);opacity:0}.mode-show.idle{cursor:none}
 
 /* ── 씬 프레임 ── */
@@ -541,7 +542,7 @@ background:#fff;border-radius:18px;box-shadow:0 14px 36px rgba(18,60,89,.12);bor
 .lact{display:flex;gap:8px;justify-content:flex-end}.lact button+button{background:var(--mint);color:var(--forest)}
 @media (max-width:760px){.lbtn{padding:7px 10px;font-size:12px}}
 .portrait .greet{max-width:none}
-</style></head><body class="mode-scroll"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-pharmacy" viewBox="0 0 64 64"><circle cx="32" cy="32" r="28.5" fill="#E9F6F2"/>
+</style></head><body class="mode-show"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-pharmacy" viewBox="0 0 64 64"><circle cx="32" cy="32" r="28.5" fill="#E9F6F2"/>
 <rect x="15" y="24" width="34" height="26" rx="3" fill="#FFFFFF" stroke="#0D625A" stroke-width="3"  stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M13 24 L16.2 14.6 Q16.8 13 18.4 13 H45.6 Q47.2 13 47.8 14.6 L51 24 Z" fill="#22699F"/>
 <rect x="29.4" y="30" width="5.2" height="14" rx="1.4" fill="#0D625A"/>
@@ -669,7 +670,7 @@ background:#fff;border-radius:18px;box-shadow:0 14px 36px rgba(18,60,89,.12);bor
 <div class="dock"><div class="segbar"><i data-ch="0" style="flex:3"><b></b></i><i data-ch="1" style="flex:6"><b></b></i><i data-ch="2" style="flex:6"><b></b></i><i data-ch="3" style="flex:6"><b></b></i><i data-ch="4" style="flex:6"><b></b></i><i data-ch="5" style="flex:6"><b></b></i><i data-ch="6" style="flex:9"><b></b></i><i data-ch="7" style="flex:8"><b></b></i><i data-ch="8" style="flex:5"><b></b></i><i data-ch="9" style="flex:5"><b></b></i><i data-ch="10" style="flex:3"><b></b></i></div><div class="drow"><button class="ibtn" id="sndBtn" aria-label="나레이션 켜기" hidden>🔊</button><button class="ibtn" id="prevBtn" aria-label="이전">‹</button><button class="ibtn play" id="playBtn" aria-label="자동 재생">❚❚</button><button class="ibtn" id="nextBtn" aria-label="다음">›</button>
 <span class="cnt" id="cnt">1 / 63</span><div class="tbar"><i id="tbar"></i></div><span class="hint">← → 이동 · Space 재생 · F 전체화면</span></div></div>
 <div class="shint" id="shint">스크롤하거나 ↓ 키로 다음 장면</div>
-<script>const META={"static": false, "chapters": ["01 · 약국 업무, 하나로", "02 · 가입·권한", "03 · 약국 대시보드", "04 · 고객 등록·연결", "05 · 건강자료·AI 리포트", "06 · 상담·문의", "07 · 맞춤 설계·결제", "08 · 조제·배송", "09 · 재구독·정산", "10 · 스마트 약국 Connect", "11 · 함께 시작하기"], "mode": "scroll", "start": 1};</script><script>const NARR={on:true,base:'tts',dur:{"1":10.45,"2":12.88,"3":10.89,"4":11.89,"9":11.73,"10":10.66,"14":11.05,"17":10.08,"23":12.88,"26":12.51,"30":10.03,"34":10.29,"35":9.56,"40":9.82,"43":10.08,"47":9.72,"51":10.5,"54":9.25,"56":9.2,"62":9.72,"63":8.31,"5":11.26,"6":10.89,"7":7.89,"8":7.84,"11":9.25,"12":8.31,"13":8.46,"15":8.25,"16":8.72,"18":7.84,"19":8.62,"20":9.4,"21":8.15,"22":6.92,"24":8.36,"25":7.31,"27":6.66,"28":8.41,"29":7.37,"31":8.99,"32":5.77,"33":6.09,"36":8.52,"37":8.36,"38":6.35,"39":9.04,"41":6.77,"42":9.09,"44":7.84,"45":7.58,"46":7.63,"48":8.2,"49":5.09,"50":7.94,"52":8.05,"53":8.52,"55":5.56,"57":6.87,"58":5.56,"59":8.46,"60":6.71,"61":9.04}};</script><script>(()=>{
+<script>const META={"static": false, "chapters": ["01 · 약국 업무, 하나로", "02 · 가입·권한", "03 · 약국 대시보드", "04 · 고객 등록·연결", "05 · 건강자료·AI 리포트", "06 · 상담·문의", "07 · 맞춤 설계·결제", "08 · 조제·배송", "09 · 재구독·정산", "10 · 스마트 약국 Connect", "11 · 함께 시작하기"], "mode": "show", "start": 1};</script><script>const NARR={on:true,base:'/tts/',dur:{"1":10.45,"2":12.88,"3":10.89,"4":11.89,"9":11.73,"10":10.66,"14":11.05,"17":10.08,"23":12.88,"26":12.51,"30":10.03,"34":10.29,"35":9.56,"40":9.82,"43":10.08,"47":9.72,"51":10.5,"54":9.25,"56":9.2,"62":9.72,"63":8.31,"5":11.26,"6":10.89,"7":7.89,"8":7.84,"11":9.25,"12":8.31,"13":8.46,"15":8.25,"16":8.72,"18":7.84,"19":8.62,"20":9.4,"21":8.15,"22":6.92,"24":8.36,"25":7.31,"27":6.66,"28":8.41,"29":7.37,"31":8.99,"32":5.77,"33":6.09,"36":8.52,"37":8.36,"38":6.35,"39":9.04,"41":6.77,"42":9.09,"44":7.84,"45":7.58,"46":7.63,"48":8.2,"49":5.09,"50":7.94,"52":8.05,"53":8.52,"55":5.56,"57":6.87,"58":5.56,"59":8.46,"60":6.71,"61":9.04}};</script><script>(()=>{
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const body=document.body,root=document.documentElement;
 const all=$$('.scene');let list=all.slice(),idx=0,playing=true,timer=null,t0=0,dur=8000,mode=META.mode||'scroll';
@@ -807,6 +808,7 @@ function narrDur(id) { return narrOn && NARR.on ? +(NARR.dur[id] || 0) : 0; }
 function narrHint(on) {
   const si = $('#shint');
   if (!si) return;
+  si.classList.toggle('nh', !!on);
   si.classList.toggle('gone', !on);
   if (on) si.textContent = '🔊 소리 재생을 위해 화면을 한 번 눌러주세요';
 }
