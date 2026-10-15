@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071E24">
+<meta name="description" content="약을 쉽게 살 수 있는 시대, 제대로 복용하도록 돕는 약사는 더 중요합니다. 약사 역할 축소 논쟁과 대한약사회의 위기 진단, 그리고 마음챙김의 제안.">
+<title>약사의 전문성이 더 중요해지는 시대 | 마음챙김 약국·약사 캠페인</title>
+<link rel="icon" type="image/png" href="../v1/brand-logo-icon.png">
+<link rel="apple-touch-icon" href="../v1/brand-logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --ink:#071E24; --ink-2:#0B2A2C; --forest:#12433D; --forest-2:#164C48;
+  --jade:#239F83; --mint:#C4F4D6; --mint-2:#E6F5EC; --mint-3:#F2FAF5;
+  --paper:#F8F7F2; --line:#D8E5DD; --line-dark:#22504B;
+  --muted:#6C8B82; --muted-dark:#9FC2B8; --alert:#B8442A; --alert-soft:#F3E2DC;
+  --serif:"Noto Serif KR",serif;
+  --sans:"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
+  --rail:78px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.65;word-break:keep-all;overflow-wrap:anywhere}
+h1,h2,h3{margin:0;letter-spacing:-.035em;line-height:1.22;font-weight:800}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--jade);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1180px,calc(100% - 48px));margin:0 auto}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.serif{font-family:var(--serif);font-weight:700;letter-spacing:-.02em}
+.small{font-size:13.5px;color:var(--muted);line-height:1.6}
+em.hl{font-style:normal;background:linear-gradient(transparent 62%,var(--mint) 62%);padding:0 .08em}
+em.warn{font-style:normal;color:var(--alert);font-weight:800}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;background:var(--ink);color:#F2FBF7;overflow:hidden;padding:clamp(56px,8vw,104px) 0 clamp(48px,6vw,80px)}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(1100px 620px at 88% -12%,rgba(35,159,131,.30),transparent 62%),
+  radial-gradient(820px 520px at -6% 108%,rgba(196,244,214,.14),transparent 60%);pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:clamp(28px,5vw,72px);align-items:center}
+.hero .eyebrow{color:var(--muted-dark)}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(31px,4.5vw,58px);letter-spacing:-.045em;margin:20px 0 0;line-height:1.2}
+.hero h1 span{display:block}
+.hero h1 .accent{color:var(--mint)}
+.hero .lede{margin-top:24px;max-width:33em;font-size:clamp(15px,1.25vw,17.5px);color:#CFE7DF;line-height:1.75}
+.hero .lede b{color:#fff;font-weight:700}
+.sig{margin-top:34px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.sig .mark{width:44px;height:44px;border-radius:13px;background:var(--mint);color:var(--forest);display:grid;place-items:center;font-weight:900;font-size:19px}
+.sig .who{font-size:14px;color:#BEDCD3;line-height:1.5}
+.sig .who b{display:block;color:#fff;font-size:16px;letter-spacing:-.02em}
+
+/* signature: two counters */
+.counters{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch}
+.counter{border-radius:20px;padding:18px 16px 15px;display:flex;flex-direction:column;gap:13px;min-height:322px}
+.counter-head{font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.counter-foot{font-size:13.5px;font-weight:700;margin-top:auto;padding-top:13px;border-top:1px solid currentColor;opacity:.95}
+.counter--shelf{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);color:#9DB4AE;filter:saturate(.35)}
+.counter--shelf .counter-head{color:#839891}
+.tags{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.tags li{font-size:13.5px;padding:9px 11px;border-radius:9px;background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.16);color:#AEC1BB}
+.counter--care{background:linear-gradient(170deg,var(--mint-3),#DCEEE4);border:1px solid var(--mint);color:var(--forest)}
+.counter--care .counter-head{color:var(--jade)}
+.ledger{display:flex;flex-direction:column;gap:0;border-radius:12px;background:#fff;border:1px solid var(--line);overflow:hidden}
+.ledger-row{display:flex;justify-content:space-between;gap:10px;padding:11px 13px;font-size:13.5px;border-bottom:1px solid var(--line)}
+.ledger-row:last-child{border-bottom:0}
+.ledger-row span{color:var(--muted)}
+.ledger-row b{color:var(--forest);font-weight:800;white-space:nowrap}
+.ledger-row b.warn{color:var(--alert)}
+
+/* evidence strip */
+.evidence{position:relative;margin-top:clamp(40px,5vw,64px);border-top:1px solid rgba(255,255,255,.16);padding-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.evidence div{font-size:13px;color:#B9D6CD;line-height:1.55}
+.evidence b{display:block;color:#fff;font-size:14.5px;font-weight:800;letter-spacing:-.02em;margin-bottom:3px}
+.evidence a{color:var(--mint);text-decoration:none;border-bottom:1px solid rgba(196,244,214,.4)}
+
+/* ---------- LAYOUT ---------- */
+main{position:relative}
+section{padding:clamp(62px,8vw,116px) 0;border-bottom:1px solid var(--line)}
+section.dark{background:var(--ink-2);color:#EAF6F1;border-bottom-color:var(--line-dark)}
+section.dark .eyebrow{color:var(--muted-dark)}
+section.dark .small{color:#A9C7BE}
+.sec-head{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);gap:clamp(16px,3vw,34px);align-items:start}
+.num{font-family:var(--serif);font-weight:700;font-size:clamp(26px,3.2vw,40px);color:var(--jade);letter-spacing:-.04em;line-height:1}
+.num i{display:block;font-style:normal;font-size:11px;font-family:var(--sans);font-weight:800;letter-spacing:.16em;color:var(--muted);margin-top:8px;text-transform:uppercase}
+h2.title{font-family:var(--serif);font-weight:900;font-size:clamp(25px,3.4vw,44px);margin-top:14px}
+.lede-2{margin-top:18px;max-width:46em;font-size:clamp(15px,1.2vw,17px);color:#41564F;line-height:1.8}
+section.dark .lede-2{color:#C3DED5}
+.body{margin-top:clamp(30px,4vw,52px);margin-left:calc(var(--rail) + clamp(16px,3vw,34px))}
+
+/* problem columns */
+.cols-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;display:flex;flex-direction:column;gap:10px}
+.pcard .k{font-size:11.5px;font-weight:800;letter-spacing:.14em;color:var(--jade);text-transform:uppercase}
+.pcard h3{font-size:19px}
+.pcard p{font-size:14.5px;color:#4C6159;line-height:1.7}
+.pcard .q{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);font-size:14px;font-weight:800;color:var(--alert)}
+
+/* quote */
+.quote{margin-top:22px;border-left:3px solid var(--jade);padding:6px 0 6px 20px}
+.quote p{font-family:var(--serif);font-size:clamp(17px,1.8vw,23px);line-height:1.55;color:var(--forest);letter-spacing:-.02em}
+.quote cite{display:block;margin-top:10px;font-size:13px;font-style:normal;color:var(--muted)}
+
+/* risk switch */
+.switch{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px;gap:4px;margin-bottom:20px}
+.switch button{border:0;background:transparent;font:inherit;font-weight:800;font-size:14px;color:var(--muted);padding:9px 20px;border-radius:999px;cursor:pointer;transition:.2s}
+.switch button[aria-pressed="true"]{background:var(--forest);color:#fff}
+.risk{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.risk article{border:1px solid var(--line);border-radius:16px;padding:20px;background:#fff;transition:.25s}
+.risk article .ic{width:38px;height:38px;border-radius:11px;background:var(--mint-2);display:grid;place-items:center;font-weight:900;color:var(--forest);margin-bottom:14px}
+.risk article h3{font-size:17.5px;margin-bottom:8px}
+.risk article p{font-size:14px;color:#4C6159;line-height:1.7}
+.risk article .state{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:13px;font-weight:800;color:var(--jade)}
+body[data-mode="none"] .risk article{border-color:#E7CFC6;background:#FDF8F6}
+body[data-mode="none"] .risk article .ic{background:var(--alert-soft);color:var(--alert)}
+body[data-mode="none"] .risk article .state{color:var(--alert)}
+.caveat{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px 19px;font-size:14px;color:#4C6159;line-height:1.75}
+.caveat b{color:var(--ink)}
+
+/* solution flow */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.flow div{padding:24px 21px;border-right:1px solid var(--line)}
+.flow div:last-child{border-right:0}
+.flow .n{font-family:var(--serif);font-size:13px;color:var(--jade);font-weight:700;letter-spacing:.1em}
+.flow h3{font-size:17.5px;margin:10px 0 9px;color:var(--ink)}
+.flow p{font-size:13.5px;color:#4C6159;line-height:1.68}
+.flow .ai{color:var(--forest);font-weight:800}
+
+/* features */
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 22px;position:relative;overflow:hidden}
+.feat::after{content:"";position:absolute;left:22px;right:22px;top:0;height:3px;background:var(--jade);border-radius:0 0 3px 3px;opacity:.85}
+.feat .n{font-size:11.5px;font-weight:800;letter-spacing:.14em;color:var(--jade)}
+.feat h3{font-size:18.5px;margin:12px 0 10px}
+.feat p{font-size:14px;color:#4C6159;line-height:1.72}
+.feat .gain{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-size:13.5px;font-weight:700;color:var(--forest)}
+.feat .gain span{color:var(--muted);font-weight:600}
+
+/* crisis table */
+.tbl{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;font-size:14px}
+.tbl caption{text-align:left;padding:0 0 12px;font-size:13px;color:var(--muted)}
+.tbl th,.tbl td{padding:15px 17px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);line-height:1.6}
+.tbl th{background:var(--mint-3);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);font-weight:800}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td:first-child{font-weight:800;color:var(--forest);white-space:nowrap}
+.tbl td.n{font-variant-numeric:tabular-nums;font-weight:800;color:var(--alert);white-space:nowrap}
+.tbl a{color:var(--jade);text-decoration:none;border-bottom:1px solid rgba(35,159,131,.35)}
+.two{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.crisis-card{background:#fff;border:1px solid var(--line);border-left:3px solid var(--alert);border-radius:14px;padding:20px 22px}
+.crisis-card h3{font-size:17.5px;margin-bottom:9px}
+.crisis-card p{font-size:14px;color:#4C6159;line-height:1.72}
+.crisis-card .tagline{margin-top:12px;font-size:13px;font-weight:800;color:var(--alert)}
+.answer{margin-top:26px;background:linear-gradient(160deg,var(--forest),var(--ink));color:#EAF6F1;border-radius:20px;padding:clamp(26px,3.4vw,42px)}
+.answer h3{font-family:var(--serif);font-size:clamp(21px,2.6vw,31px);color:#fff;letter-spacing:-.03em}
+.answer p{margin-top:16px;font-size:15px;color:#C3DED5;line-height:1.8;max-width:52em}
+.answer ul{margin:20px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.answer li{background:rgba(255,255,255,.06);border:1px solid rgba(196,244,214,.2);border-radius:13px;padding:16px 17px;font-size:14px;color:#DFF3EB;line-height:1.6}
+.answer li b{display:block;color:var(--mint);font-size:12px;letter-spacing:.12em;margin-bottom:7px}
+.disclaimer{margin-top:26px;font-size:13px;color:var(--muted);line-height:1.75;border-top:1px solid var(--line);padding-top:18px}
+
+/* cta */
+.cta{background:var(--ink);color:#F2FBF7;text-align:center;border-bottom:0}
+.cta h2{font-family:var(--serif);font-weight:900;font-size:clamp(26px,3.6vw,48px);letter-spacing:-.04em;max-width:22em;margin:0 auto}
+.cta p{margin:22px auto 0;max-width:40em;color:#C3DED5;font-size:16px;line-height:1.75}
+.btns{margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:999px;font-weight:800;font-size:15.5px;text-decoration:none;transition:.2s}
+.btn--p{background:var(--mint);color:var(--forest)}
+.btn--p:hover{background:#D9FBE6}
+.btn--s{border:1px solid rgba(196,244,214,.45);color:#DFF3EB}
+.btn--s:hover{border-color:var(--mint)}
+
+/* footer */
+footer{background:#04171B;color:#7FA39B;padding:46px 0 54px;font-size:13px;line-height:1.8}
+footer h3{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mint);margin-bottom:14px;font-weight:800}
+footer ol{margin:0 0 26px;padding-left:20px}
+footer li{margin-bottom:8px}
+footer a{color:#BEDCD3;text-decoration:none;border-bottom:1px solid rgba(190,220,211,.3)}
+.foot-note{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;color:#6B8C85}
+
+/* reveal — transform only: content is never hidden, so full-page captures,
+   print, and no-JS environments always show every section. */
+.rv{transform:translateY(26px);transition:transform .8s cubic-bezier(.2,.7,.3,1)}
+.rv.on{transform:none}
+@media (prefers-reduced-motion:reduce){.rv{transform:none;transition:none}html{scroll-behavior:auto}}
+
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr}
+  .feats,.cols-3,.risk,.flow,.two,.answer ul,.evidence{grid-template-columns:1fr 1fr}
+  .flow div{border-right:0;border-bottom:1px solid var(--line)}
+  .flow div:last-child{border-bottom:0}
+  .body{margin-left:0}
+  .sec-head{grid-template-columns:1fr}
+  .num i{display:none}
+}
+@media (max-width:680px){
+  .wrap{width:calc(100% - 34px)}
+  .feats,.cols-3,.risk,.flow,.two,.answer ul,.evidence,.counters{grid-template-columns:1fr}
+  .tbl td:first-child{white-space:normal}
+  .counter{min-height:0}
+}
+</style>
+</head>
+<body data-mode="care">
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">마음챙김 브랜드 캠페인 · 약국·약사 편</p>
+      <h1>
+        <span>약을 쉽게 살 수 있는 시대.</span>
+        <span class="accent">제대로 복용하도록 돕는</span>
+        <span class="accent">약사는 더 중요합니다.</span>
+      </h1>
+      <p class="lede">
+        단순한 가격 경쟁을 넘어, <b>약사의 전문 상담과 지속적인 건강관리를 연결하는 플랫폼</b>.
+        구매는 빨라졌지만 복용을 확인하는 시간은 줄었습니다. 마음챙김은 그 시간을 약사에게 되돌려 드립니다.
+      </p>
+      <div class="sig">
+        <div class="mark" aria-hidden="true">藥</div>
+        <p class="who"><b>마음챙김 · PulseNall</b>약국·약사 파트너 캠페인</p>
+      </div>
+    </div>
+
+    <div class="counters" aria-hidden="true">
+      <div class="counter counter--shelf">
+        <p class="counter-head">진열 · 가격 · 결제</p>
+        <ul class="tags">
+          <li>대량 진열 · 할인가</li>
+          <li>빠른 선택 · 무인 결제</li>
+          <li>배송 상자</li>
+        </ul>
+        <p class="counter-foot">남는 것 — 영수증</p>
+      </div>
+      <div class="counter counter--care">
+        <p class="counter-head">질문 · 확인 · 기록</p>
+        <div class="ledger">
+          <div class="ledger-row"><span>복용 중인 약</span><b>3건 확인</b></div>
+          <div class="ledger-row"><span>겹치는 성분</span><b class="warn">1건 검토</b></div>
+          <div class="ledger-row"><span>다음 상담</span><b>이어짐</b></div>
+        </div>
+        <p class="counter-foot">남는 것 — 상담 기록</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="evidence">
+      <div><b>창고형 약국 인근 535개 약국 응답</b>“창고형 약국 문제가 심각하다” 81.6% — <a href="https://www.kpanet.or.kr/board.cm?menuCd=1002020000&amp;boardSeq=224328&amp;tabYn=N" target="_blank" rel="noopener">대한약사회 2026.04.13</a></div>
+      <div><b>창고·마트형 약국 21곳 중 6곳</b>“약사 전화상담 불가”를 온라인 정보에 명시 — <a href="https://www.kpanews.co.kr/news/articleView.html?idxno=529228" target="_blank" rel="noopener">약사공론 2026.02.11</a></div>
+      <div><b>2026.12.24 의료법 개정 시행</b>취약계층 제한 허용 → 전면 확대 논의 — <a href="https://www.yna.co.kr/view/AKR20260904157600518" target="_blank" rel="noopener">연합뉴스 2026.09.08</a></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 -->
+<section id="s01">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="num">01<i>문제 제기</i></p>
+      <div>
+        <h2 class="title">편해진 구매,<br>사라지는 질문.</h2>
+        <p class="lede-2">약을 만나는 방식은 계속 빨라졌습니다. 대량 진열, 가격 비교, 빠른 결제, 그리고 배송까지. 그런데 그 속도만큼 <em class="hl">“지금 드시는 약이 있나요?”라는 질문</em>은 줄고 있습니다.</p>
+      </div>
+    </div>
+    <div class="body">
+      <div class="cols-3 rv">
+        <article class="pcard">
+          <p class="k">가격 경쟁</p>
+          <h3>가격표가 앞에 서면</h3>
+          <p>같은 성분, 같은 효능이라면 결국 가격이 선택의 기준이 됩니다. 상담은 ‘덤’처럼 뒤로 밀립니다.</p>
+          <p class="q">→ 상담이 원가가 됩니다.</p>
+        </article>
+        <article class="pcard">
+          <p class="k">빠른 구매</p>
+          <h3>고르는 시간은 짧아지고</h3>
+          <p>진열대에서 바로 집어 결제하는 흐름에서는 복용 중인 약을 확인할 지점이 사라집니다.</p>
+          <p class="q">→ 확인할 지점이 없습니다.</p>
+        </article>
+        <article class="pcard">
+          <p class="k">약 배송 확대</p>
+          <h3>문 앞에 놓이는 약</h3>
+          <p>배송이 넓어질수록 약은 손에 닿기 쉬워지지만, 조제 이후의 복약지도는 더 멀어질 수 있습니다.</p>
+          <p class="q">→ 배송은 끝이 아닙니다.</p>
+        </article>
+      </div>
+      <div class="quote rv">
+        <p>“구매 이력이 없는 약에 대해 상담 요청을 받는 경우가 늘고 있다. 상담을 거부할 수도 없고, 책임은 떠안는 구조다.”</p>
+        <cite>지역약국 약사 — <a href="https://www.kpanews.co.kr/news/articleView.html?idxno=529228" target="_blank" rel="noopener">약사공론 「창고형 약국 “약은 팔지만, 전화상담은 없다”」 2026.02.11</a></cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section id="s02" class="dark">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="num">02<i>위험 인식</i></p>
+      <div>
+        <h2 class="title">상담이 빠지면,<br>무엇이 남을까요.</h2>
+        <p class="lede-2">구매 방식이 아니라 <em class="hl">상담과 복용 정보 확인이 빠진 상태</em>가 위험을 만듭니다. 아래 두 가지 상황을 직접 바꿔 보세요.</p>
+      </div>
+    </div>
+    <div class="body">
+      <div class="switch rv" role="group" aria-label="상담 유무에 따른 위험 비교">
+        <button type="button" id="btnCare" aria-pressed="true">상담이 있는 구매</button>
+        <button type="button" id="btnNone" aria-pressed="false">상담이 없는 구매</button>
+      </div>
+      <div class="risk rv" id="risk">
+        <article>
+          <div class="ic" aria-hidden="true">疊</div>
+          <h3>중복 성분</h3>
+          <p>처방약·일반약·영양제에 같은 성분이 겹쳐도, 확인하는 사람이 없으면 알 수 없습니다.</p>
+          <p class="state">상담 시 — 성분 겹침을 함께 확인</p>
+        </article>
+        <article>
+          <div class="ic" aria-hidden="true">歷</div>
+          <h3>복용약 확인 누락</h3>
+          <p>지금 복용 중인 약, 최근 바뀐 처방, 건강검진 결과를 아무도 묻지 않으면 판단의 근거가 비어 있습니다.</p>
+          <p class="state">상담 시 — 약력·검진 정보로 판단</p>
+        </article>
+        <article>
+          <div class="ic" aria-hidden="true">重</div>
+          <h3>오남용 우려</h3>
+          <p>상담 창구가 닫혀 있으면 같은 약을 반복 구매하거나, 필요 이상으로 남겨두게 됩니다.</p>
+          <p class="state">상담 시 — 필요량과 주의사항 확인</p>
+        </article>
+      </div>
+      <div class="caveat rv">
+        <b>먼저 분명히 하겠습니다.</b> 마음챙김은 창고형 약국이 곧 과복용의 원인이라고 단정하지 않습니다. 특정 판매 형태나 업체를 지목하지도 않습니다.
+        다만 <b>상담과 복용 정보 확인이 빠졌을 때</b> 생길 수 있는 위험은 구체적으로 보여드리는 편이 더 정확하고, 더 설득력이 있다고 믿습니다.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section id="s03">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="num">03<i>해결책</i></p>
+      <div>
+        <h2 class="title">AI가 정리하고,<br>약사가 판단합니다.</h2>
+        <p class="lede-2">마음챙김은 약사를 대체하지 않습니다. <em class="hl">약사가 판단할 시간과 근거를 만들어 드립니다.</em></p>
+      </div>
+    </div>
+    <div class="body">
+      <div class="flow rv">
+        <div><p class="n">STEP 1</p><h3>건강정보를 한곳에</h3><p>건강검진 · 복용약 · 영양제 · 생활습관 정보를 상담 전에 모읍니다.</p></div>
+        <div><p class="n">STEP 2</p><h3><span class="ai">AI가 먼저 정리</span></h3><p>성분 중복, 주의 정보, 확인이 필요한 항목을 요약해 상담 참고자료로 만듭니다.</p></div>
+        <div><p class="n">STEP 3</p><h3>약사가 전문 검토</h3><p>요약은 참고자료일 뿐입니다. 최종 판단과 설명은 약사의 전문 영역입니다.</p></div>
+        <div><p class="n">STEP 4</p><h3>기록하고 이어갑니다</h3><p>상담 내용이 기록으로 남아 다음 상담과 정기 관리의 출발점이 됩니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section id="s04" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="num">04<i>특장점</i></p>
+      <div>
+        <h2 class="title">약국과 약사가<br>실제로 얻는 것.</h2>
+        <p class="lede-2">기능 목록이 아니라, 상담 현장에서 달라지는 지점만 정리했습니다.</p>
+      </div>
+    </div>
+    <div class="body">
+      <div class="feats rv">
+        <article class="feat">
+          <p class="n">01 상담 전 준비</p>
+          <h3>고객을 묻기 전에, 이미 정리되어 있습니다</h3>
+          <p>건강검진·복용약·영양제·생활습관을 한 화면에서 확인하고 상담을 시작합니다.</p>
+          <p class="gain">상담 시간 <span>— 준비가 아니라 대화에 씁니다</span></p>
+        </article>
+        <article class="feat">
+          <p class="n">02 성분 검토</p>
+          <h3>겹치는 성분과 주의 정보를 함께 봅니다</h3>
+          <p>처방약·일반약·영양제의 성분을 겹쳐 확인해, 상담에서 짚어야 할 항목을 놓치지 않습니다.</p>
+          <p class="gain">확인 누락 <span>— 상담 참고자료로 보완</span></p>
+        </article>
+        <article class="feat">
+          <p class="n">03 기록의 연속성</p>
+          <h3>지난 상담이 다음 상담의 출발점이 됩니다</h3>
+          <p>상담 기록이 남으면 “저번에 드시던 약”에서 대화가 시작됩니다. 매번 처음부터 묻지 않습니다.</p>
+          <p class="gain">관계 <span>— 1회 판매에서 연속 관리로</span></p>
+        </article>
+        <article class="feat">
+          <p class="n">04 맞춤 설계</p>
+          <h3>고객별 목표에 맞춰 제안합니다</h3>
+          <p>필요와 생활 패턴에 맞춘 복용·영양 설계를 약사가 직접 구성합니다.</p>
+          <p class="gain">차별점 <span>— 가격이 아닌 전문성으로</span></p>
+        </article>
+        <article class="feat">
+          <p class="n">05 정기 관리</p>
+          <h3>관계가 끊기지 않게 이어갑니다</h3>
+          <p>알림과 재구독 흐름으로 다음 상담 시점을 놓치지 않습니다.</p>
+          <p class="gain">재방문 <span>— 관리가 자연스럽게 이어짐</span></p>
+        </article>
+        <article class="feat">
+          <p class="n">06 운영 가시성</p>
+          <h3>약국 운영을 한 화면에서 봅니다</h3>
+          <p>상담·고객·배송 확인·알림 등 운영 지표와 권한 승인 단계를 한곳에서 관리합니다.</p>
+          <p class="gain">운영 <span>— 지표와 권한을 함께 관리</span></p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section id="s05">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="num">05<i>약사회의 위기</i></p>
+      <div>
+        <h2 class="title">지금 약사회는<br>두 가지를 위기로 봅니다.</h2>
+        <p class="lede-2">대한약사회는 창고형 약국 확산과 의약품 배송 전면 확대를 약사의 본질적 역할이 흔들리는 사안으로 규정하고, 제도 개선과 정책 철회를 요구하고 있습니다. <em class="hl">이 문제를 피해 가지 않고 정면으로 다룹니다.</em></p>
+      </div>
+    </div>
+    <div class="body">
+      <div class="two rv">
+        <article class="crisis-card">
+          <h3>① 창고형 약국 확산</h3>
+          <p>대한약사회는 창고형 약국이 약사의 본질적 역할인 복약지도, 의약품 안전관리, 환자 맞춤 상담 기능을 훼손할 수 있다고 밝혔습니다. 인근 약국 535곳 설문에서도 응답자의 81.6%가 문제를 ‘심각하다’고 답했습니다.</p>
+          <p class="tagline">복약지도·상호작용 점검·맞춤 상담이 배제된 판매 구조</p>
+        </article>
+        <article class="crisis-card">
+          <h3>② 의약품 배송 전면 확대</h3>
+          <p>2026년 12월 24일 시행되는 의료법 개정은 섬·벽지 거주자, 거동 불편자, 희귀질환자 등 취약계층에 한해 재택 수령을 허용합니다. 약사회는 여기서 더 나아간 전면 확대 논의에 대해 약물 오남용과 보건의료 상업화를 우려하며 반대하고 있습니다.</p>
+          <p class="tagline">약물 쇼핑·오남용·민간 플랫폼 독점 우려</p>
+        </article>
+      </div>
+
+      <table class="tbl rv">
+        <caption>인용한 수치와 근거 — 원문 링크에서 직접 확인하실 수 있습니다.</caption>
+        <thead><tr><th scope="col">근거</th><th scope="col">수치·내용</th><th scope="col">출처</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>창고형 약국 인식</td>
+            <td class="n">81.6%</td>
+            <td>‘심각하다’ 응답 비율(‘매우 심각’ 46.0%) · 창고형 약국 개설지역 인근 약국 535곳 조사 — <a href="https://www.kpanet.or.kr/board.cm?menuCd=1002020000&amp;boardSeq=224328&amp;tabYn=N" target="_blank" rel="noopener">대한약사회 2026.04.13</a></td>
+          </tr>
+          <tr>
+            <td>약사회 우선 과제</td>
+            <td class="n">62.1%</td>
+            <td>약국 개설 사전심사제 도입 등 창고형 약국 규제법안 추진 — <a href="https://www.kpanet.or.kr/board.cm?menuCd=1002020000&amp;boardSeq=224328&amp;tabYn=N" target="_blank" rel="noopener">대한약사회 2026.04.13</a></td>
+          </tr>
+          <tr>
+            <td>상담 창구 실태</td>
+            <td class="n">21곳 중 6곳</td>
+            <td>창고·마트형 약국이 온라인 정보에 ‘약사 전화상담 불가’를 명시 — <a href="https://www.kpanews.co.kr/news/articleView.html?idxno=529228" target="_blank" rel="noopener">약사공론 2026.02.11</a></td>
+          </tr>
+          <tr>
+            <td>배송 확대 반대 이유</td>
+            <td class="n">91.6%</td>
+            <td>‘민간 플랫폼의 시장 독점으로 인한 보건의료 상업화 우려’(중복 응답) — <a href="https://www.yonhapnewstv.co.kr/news/AKR20261007165135bGF" target="_blank" rel="noopener">연합뉴스TV 2026.10.07</a></td>
+          </tr>
+          <tr>
+            <td>제도 시행</td>
+            <td class="n">2026.12.24</td>
+            <td>의료법 개정(34조의5) 시행 · 취약계층에 한해 조제 약국 외 장소 수령 허용 — <a href="https://www.yna.co.kr/view/AKR20260904157600518" target="_blank" rel="noopener">연합뉴스 2026.09.08</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="answer rv">
+        <h3>규제만으로는 약사의 자리가 돌아오지 않습니다.</h3>
+        <p>
+          창고형 약국을 막고 배송을 늦춘다고 해서, 상담이 다시 약국의 중심으로 오지는 않습니다.
+          상담이 <b>약국에 남는 일</b>이 되어야 합니다. 상담이 기록되고, 기록이 관리가 되고, 관리가 관계가 될 때
+          약사의 전문성은 가격 경쟁 바깥에서 다시 증명됩니다.
+        </p>
+        <ul>
+          <li><b>기록</b>상담이 남으면 약사의 전문성이 자산이 됩니다.</li>
+          <li><b>관리</b>정기 관리가 매출이 아니라 신뢰로 이어집니다.</li>
+          <li><b>관계</b>한 번의 판매가 아니라 계속되는 건강관리로.</li>
+        </ul>
+        <p style="margin-top:24px;font-size:15.5px;color:#DFF3EB"><b>마음챙김은 상담을 약국의 중심으로 되돌리는 플랫폼입니다.</b></p>
+      </div>
+
+      <p class="disclaimer rv">
+        ※ 본 페이지는 마음챙김(펄스널)의 약국·약사 대상 캠페인 시안입니다. 대한약사회 및 관련 단체의 공식 입장을 대신하지 않으며,
+        인용한 자료는 모두 원문 링크로 확인할 수 있도록 표기했습니다. 특정 약국·업체를 지목하거나 창고형 약국이 과복용의 원인이라고 단정하지 않습니다.
+        수치는 조사 대상과 시점에 따라 달라질 수 있습니다. 게시 전 카피·법률·서비스 기능 검증이 필요합니다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 -->
+<section class="cta" id="s06">
+  <div class="wrap rv">
+    <p class="eyebrow" style="color:var(--muted-dark)">행동 유도</p>
+    <h2 style="margin-top:16px">약사의 전문성을 강화하는 플랫폼,<br>마음챙김과 시작하세요.</h2>
+    <p>가격 경쟁이 아니라 상담으로. 일회성 판매가 아니라 지속적인 건강관리로.<br>약국·약사 파트너 상담을 열어 두었습니다.</p>
+    <div class="btns">
+      <a class="btn btn--p" href="https://pulsenall.com" target="_blank" rel="noopener">파트너 상담 신청 <span aria-hidden="true">↗</span></a>
+      <a class="btn btn--s" href="../why/">브랜드 필름 보기 <span aria-hidden="true">▶</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h3>출처</h3>
+    <ol>
+      <li>대한약사회, 「창고형 약국 운영 방식에 대한 입장문」 (2025.06.23) — <a href="https://www.kpanet.or.kr/board.cm?boardSeq=198400&amp;menuCd=1002020000&amp;tabYn=N" target="_blank" rel="noopener">kpanet.or.kr</a></li>
+      <li>대한약사회, 「창고형 약국 인근 약국 535개 대상 설문조사」 (2026.04.13) — <a href="https://www.kpanet.or.kr/board.cm?menuCd=1002020000&amp;boardSeq=224328&amp;tabYn=N" target="_blank" rel="noopener">kpanet.or.kr</a></li>
+      <li>약사공론, 「창고형 약국 “약은 팔지만, 전화상담은 없다”」 (2026.02.11) — <a href="https://www.kpanews.co.kr/news/articleView.html?idxno=529228" target="_blank" rel="noopener">kpanews.co.kr</a></li>
+      <li>연합뉴스, 「[팩트체크] 의약품 배송, 연말부터 허용?」 (2026.09.08) — <a href="https://www.yna.co.kr/view/AKR20260904157600518" target="_blank" rel="noopener">yna.co.kr</a></li>
+      <li>연합뉴스TV, 「약사단체 “약 배송 전면 확대 반대…의약품 오남용 우려 커”」 (2026.10.07) — <a href="https://www.yonhapnewstv.co.kr/news/AKR20261007165135bGF" target="_blank" rel="noopener">yonhapnewstv.co.kr</a></li>
+    </ol>
+    <p class="foot-note">
+      마음챙김 브랜드 캠페인 · 약국·약사 편 (시안 v0.1) · 모션·내레이션 제작 전 카피 검토용 페이지입니다.<br>
+      표기된 수치는 조사 대상과 시점이 제한된 자료이며, 본 페이지는 특정 판매 형태를 비난하거나 인과관계를 단정하지 않습니다.
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('on'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+    items.forEach(function(el, i){ el.style.transitionDelay = (Math.min(i, 3) * 60) + 'ms'; io.observe(el); });
+  }
+
+  var btnCare = document.getElementById('btnCare');
+  var btnNone = document.getElementById('btnNone');
+  var states = {
+    care: ['상담 시 — 성분 겹침을 함께 확인', '상담 시 — 약력·검진 정보로 판단', '상담 시 — 필요량과 주의사항 확인'],
+    none: ['상담 없음 — 겹침을 알 수 없음', '상담 없음 — 판단 근거가 비어 있음', '상담 없음 — 확인 창구가 닫혀 있음']
+  };
+  function apply(mode){
+    document.body.setAttribute('data-mode', mode);
+    var rows = document.querySelectorAll('#risk .state');
+    rows.forEach(function(el, i){ el.textContent = states[mode][i]; });
+    var care = mode === 'care';
+    btnCare.setAttribute('aria-pressed', String(care));
+    btnNone.setAttribute('aria-pressed', String(!care));
+  }
+  btnCare.addEventListener('click', function(){ apply('care'); });
+  btnNone.addEventListener('click', function(){ apply('none'); });
+  apply('care');
+})();
+</script>
+</body>
+</html>
