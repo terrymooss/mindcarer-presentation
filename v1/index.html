@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071c29"><meta name="description" content="마음챙김 약국·약사 통합 운영 플랫폼 — 63컷 인터랙티브 소개 영상">
+<title>마음챙김 | 풀스크린 브랜드 필름 6.1</title><link rel="icon" type="image/png" sizes="any" href="./brand-logo-icon.png"><link rel="apple-touch-icon" href="./brand-logo-icon.png"><link rel="stylesheet" href="design.css"></head>
+<body><div class="shell">
+ <header class="headbar">
+  <div class="brand"><span class="brand-emblem"><span></span><span></span><span></span></span><strong>마음챙김</strong><small>BRAND MOTION STUDIO / 63 SCENES</small></div>
+  <div class="headmeta"><span class="live-dot"></span> INTERACTIVE BRAND FILM <b>V4.0</b><span class="line"></span> MOONJUNG NARRATION</div>
+ </header>
+ <main class="screen-area">
+  <div class="stage-frame" id="stageFrame">
+    <svg id="stage" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="마음챙김 서비스 소개 모션그래픽" width="1600" height="900" viewBox="0 0 1600 900"></svg>
+    <div class="chapter-toast" id="chapterToast" aria-live="polite"></div>
+  </div>
+  <div class="reel">
+   <div class="reel-head"><span class="reel-label">THE STORY</span><span class="reel-title" id="nowTitle">01 · 복잡한 약국 업무</span>
+     <span id="chapterLabel" class="current-chapter">01 / INTRO</span><span class="reel-time" id="clock">00:00 / 08:21</span>
+   </div>
+   <div class="chapter-track" id="chapterTrack" aria-label="챕터별 진행도"></div>
+   <input aria-label="영상 재생 위치 이동" type="range" id="seek" min="0" step=".02" value="0">
+   <div class="controls">
+    <button id="play" class="primary" aria-label="재생 또는 일시정지">▶ 재생</button>
+    <button id="prev" title="이전 컷" aria-label="이전 컷">‹</button><button id="next" title="다음 컷" aria-label="다음 컷">›</button>
+    <button id="muted" title="음성 끄기 / 켜기" aria-label="음성 끄기">◖))</button>
+    <select aria-label="재생 모드" id="mode"><option value="all">전체 63컷</option><option value="highlights">핵심 21컷</option></select>
+    <select aria-label="챕터 이동" id="chapters"></select>
+    <button id="sceneListBtn" title="전체 컷 목차 열기" aria-label="컷 목차 보기">☷ 컷 목차</button>
+    <div class="spacer"></div><button id="captionsBtn" aria-label="자막 표시" aria-pressed="false">▤ 자막</button>
+    <button id="fullscreen" aria-label="전체화면 전환">⛶</button><span class="voice-tag">● MOONJUNG</span>
+   </div>
+  </div>
+ </main>
+ <footer class="disclaimer">
+  <span>63컷 · 11챕터 · 개별 SVG 모션 · 음성 길이 기반 자동 전환 · 공식 명칭 ‘마음챙김’</span>
+  <span>내부 검수용 · 화면·수치·고객정보는 모식도 · Typecast Free API 상업적 배포 조건 확인 필요</span>
+ </footer>
+ <audio id="voice" preload="metadata"></audio>
+ <div class="caption-subtitle" id="captionText" hidden></div>
+ <dialog id="sceneDialog" class="scene-dialog"><header><h2>마음챙김 전체 컷</h2><button id="closeDialog" aria-label="닫기">✕</button></header><div id="sceneLinks"></div></dialog>
+</div>
+<script src="data.js"></script><script src="engine.js"></script><script src="scenes_ext.js"></script><script src="v5_design.js"></script><script src="v5_features.js"></script><script src="v6_motions.js"></script><script src="v6_1_polish.js"></script><script src="player.js"></script>
+</body></html>

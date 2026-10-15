@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+:root{--ink:#eaf5f5;--muted:#8fa9b3;--jade:#4ac8b1;--navy:#0a2533;--panel:#102a38}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;color:var(--ink);font-family:'DM Sans','Apple SD Gothic Neo','Noto Sans CJK KR',system-ui,sans-serif}
+body{background:radial-gradient(ellipse at 50% 0%,#164051 0%,#0b1c27 58%,#061520 100%);background-attachment:fixed}
+.shell{width:min(100% - 44px,1530px);margin:0 auto;padding-bottom:26px}
+.headbar{display:flex;justify-content:space-between;align-items:center;height:99px;gap:18px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand strong{font-size:23px;letter-spacing:-1.1px;font-weight:850}
+.brand small{color:#7398a9;margin-left:8px;font-size:11px;letter-spacing:1.65px;white-space:nowrap;font-weight:700}
+.brand-emblem{position:relative;background:#ddf8ed;border-radius:50%;width:33px;height:33px;flex:none}
+.brand-emblem span{position:absolute;width:7px;height:14px;background:#0d625a;transform:rotate(38deg);border-radius:5px 5px 3px 3px;top:9px;left:13px}
+.brand-emblem span:nth-child(2){top:11px;left:7px;transform:rotate(-42deg);opacity:.58}
+.brand-emblem span:nth-child(3){top:11px;left:19px;transform:rotate(120deg);opacity:.76}
+.headmeta{font-size:11px;letter-spacing:1.6px;color:#91aeb9;display:flex;align-items:center;gap:12px;white-space:nowrap;font-weight:700}
+.headmeta b{color:#fff}.headmeta .line{background:#2a4a58;width:35px;height:1px}.live-dot{width:7px;height:7px;border-radius:50%;background:#51dfb8;box-shadow:0 0 13px #42d9c080}
+.screen-area{overflow:hidden;border-radius:20px;border:1px solid #547a8b55;box-shadow:0 22px 88px #0009,0 0 0 1px #aeead810;max-width:1455px;margin:auto}
+.stage-frame{width:100%;aspect-ratio:16/9;position:relative;background:#0b2431;overflow:hidden}
+#stage{position:absolute;width:100%;height:100%;display:block;inset:0}
+.reel{background:#0a2330;padding:17px 24px 18px;border-top:1px solid #284a59}
+.reel-head{display:flex;align-items:center;gap:17px;height:27px}
+.reel-label{font-size:10px;letter-spacing:2px;color:#76a5aa;font-weight:800;white-space:nowrap}
+.reel-title{font-size:14px;letter-spacing:-.3px;font-weight:700;color:#f1f9f7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reel-time{font-size:12px;color:#a2c3cb;margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums}
+#seek{display:block;width:100%;margin:10px 0 18px;appearance:none;height:4px;background:#315261;outline:none;border-radius:4px;accent-color:#64d7ba;cursor:pointer}
+#seek::-webkit-slider-thumb{appearance:none;width:13px;height:13px;background:#65e6bd;border:3px solid #173545;border-radius:50%;box-shadow:0 0 0 2px #64d7ba44;cursor:grab}
+.controls{display:flex;align-items:center;gap:7px}
+.controls button{background:#17384a;border:1px solid #386172;color:#d7e8ec;font-size:13px;height:36px;min-width:37px;padding:0 13px;border-radius:10px;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.controls button:hover{background:#245a67;border-color:#65bda9;transform:translateY(-1px)}
+.controls .primary{background:#baf2d6;border-color:#baf2d6;color:#082a2b;font-weight:800;min-width:90px}
+.controls .primary:hover{background:#fff}
+.controls .spacer{flex:1}
+.chips{display:flex;gap:5px;margin-left:16px;align-items:center}
+.chips button{min-width:36px;height:32px;font-size:11px;padding:0 9px;border-color:#335264;color:#a6bec7}
+.chips button.current{background:#dcf9e9;color:#0a5849;border-color:#dcf9e9;font-weight:800}
+.voice-tag{color:#95d5c2;font-size:10px;letter-spacing:1px;font-weight:850;white-space:nowrap;padding:10px 5px}
+.disclaimer{display:flex;justify-content:space-between;gap:14px;font-size:11px;color:#7699a5;line-height:1.5;margin:15px 4px}
+@media(max-width:850px){.headbar{height:76px}.brand small,.headmeta{display:none}.shell{width:calc(100% - 16px)}.reel{padding:12px}.controls{flex-wrap:wrap}.chips{order:2;width:100%;margin:4px 0;justify-content:center}.controls .spacer{display:none}.voice-tag{margin-left:auto}.disclaimer{flex-direction:column;gap:4px}.reel-title{font-size:12px}}
+body.render{background:#fff}
+body.render .shell{width:1920px;margin:0;padding:0;max-width:none}
+body.render .stage-frame{width:1920px;height:1080px;border:0;border-radius:0}
+body.render .screen-area{width:1920px;max-width:none;border:0;border-radius:0;box-shadow:none}
+body.render .headbar,body.render .reel,body.render .disclaimer{display:none}
+
+/* Complete 63-scene Studio controls */
+.chapter-track{display:flex;gap:3px;align-items:stretch;margin:11px 0 2px;height:9px}
+.chapter-track button{border:0;cursor:pointer;min-width:4px;background:#395664;border-radius:3px;padding:0;position:relative;opacity:.74}
+.chapter-track button[data-active="true"]{background:#94ebc9;box-shadow:0 0 9px #41caa088;opacity:1}
+.chapter-track button:hover{opacity:1;filter:brightness(1.4)}
+.chapter-track button:focus-visible{outline:2px solid white;outline-offset:3px}
+.chapter-track .played{display:block;background:#90ddbe;height:100%;border-radius:3px;pointer-events:none}
+.chapter-track button .tooltip{display:none}
+.current-chapter{font-size:11px;color:#9fdccc;padding:5px 10px;background:#1b4550;border-radius:8px;white-space:nowrap;font-weight:750}
+.controls select{font:inherit;font-size:12px;font-weight:750;color:#c7e5e3;border:1px solid #3b6170;background:#17384a;border-radius:9px;padding:8px 10px;max-width:175px;cursor:pointer}
+.controls option{background:#17384a;color:white}
+.chapter-toast{position:absolute;top:22px;right:23px;padding:8px 16px;background:#0b3f40bb;color:#e2fbf2;border:1px solid #6ca59e55;font-size:12px;letter-spacing:1px;border-radius:24px;pointer-events:none;opacity:0;transition:opacity .3s}
+.caption-subtitle{position:fixed;bottom:11%;left:50%;transform:translateX(-50%);max-width:min(88vw,1100px);min-width:240px;text-align:center;background:#0a1d27df;color:#fff;box-shadow:0 12px 32px #0006;border:1px solid #62917c60;border-radius:13px;font-size:19px;line-height:1.65;padding:11px 24px;pointer-events:none;z-index:500;font-weight:750}
+.caption-subtitle[hidden]{display:none}
+.scene-dialog{background:#0d2835;color:#eaf9f4;border:1px solid #47776c;box-shadow:0 25px 90px #000a;border-radius:18px;width:min(95vw,960px);max-height:min(85vh,820px);padding:0}
+.scene-dialog::backdrop{background:#04151ad4;backdrop-filter:blur(8px)}
+.scene-dialog header{position:sticky;top:0;background:#0c2a36;display:flex;justify-content:space-between;align-items:center;padding:18px 23px;border-bottom:1px solid #315463;z-index:2}
+.scene-dialog h2{margin:0;font-size:23px}
+.scene-dialog header button{font-size:20px;border:0;background:#214c53;color:#dff9ee;border-radius:10px;padding:9px 14px;cursor:pointer}
+#sceneLinks{padding:16px 22px 28px}
+#sceneLinks .chapterTitle{font-size:14px;color:#8bc8b8;font-weight:850;margin:22px 0 10px;letter-spacing:.7px;padding-bottom:6px;border-bottom:1px solid #386172}
+#sceneLinks .cutgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#sceneLinks button{width:100%;display:flex;text-align:left;align-items:center;gap:11px;border-radius:10px;padding:12px 13px;border:1px solid #2d5360;background:#173c4a;color:#e6f3f0;cursor:pointer;font:inherit;font-size:14px}
+#sceneLinks button:hover{background:#285e5b}
+#sceneLinks button .num{color:#92e8c6;font-weight:850;width:23px}
+#sceneLinks button .dur{margin-left:auto;color:#98b8b9;font-size:11px}
+@media(max-width:920px){.reel-head{gap:7px}.current-chapter{display:none}.controls select{max-width:135px}.controls .voice-tag{display:none}}
+@media(max-width:680px){.controls{gap:6px}.controls select{max-width:42%;flex:1}.controls button{min-width:32px;padding:0 10px}.reel-title{white-space:nowrap;max-width:150px}.chapter-track{height:8px}.caption-subtitle{font-size:13px;padding:8px 12px}#sceneLinks .cutgrid{grid-template-columns:1fr}}
+body.render .caption-subtitle,body.render .scene-dialog{display:none}
+
+/* v5 full-bleed: content only, chrome appears only on user interaction */
+html,body{height:100%;overflow:hidden;background:#F8F7F2}
+.shell{position:fixed;inset:0;width:100vw!important;height:100dvh!important;max-width:none!important;margin:0!important;padding:0!important;overflow:hidden}
+.headbar,.disclaimer,.reel-head,.chapter-track{display:none!important}
+.screen-area{position:absolute!important;inset:0;width:100vw!important;height:100dvh!important;max-width:none!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:hidden!important}
+.stage-frame{position:absolute!important;inset:0;width:100vw!important;height:100dvh!important;aspect-ratio:auto!important;background:#F8F7F2}
+#stage{width:100%!important;height:100%!important;position:absolute;inset:0;display:block;object-fit:contain}
+.reel{position:fixed!important;left:50%!important;right:auto!important;bottom:18px!important;width:min(1040px,calc(100vw - 24px));max-width:1040px;transform:translate(-50%,20px);opacity:0;visibility:hidden;pointer-events:none;background:#0A282BAA!important;backdrop-filter:blur(18px);border:1px solid #7ebaa15c;border-radius:22px!important;padding:15px 21px 12px!important;box-shadow:0 15px 45px #0006;transition:opacity .25s,transform .25s,visibility .25s;z-index:70}
+.shell:hover .reel,.reel:hover,.reel:focus-within,.shell:has(.scene-dialog[open]) .reel{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0)}
+#seek{margin:0 0 13px!important;height:4px}
+.controls{gap:8px;flex-wrap:nowrap!important}.controls .primary{min-width:90px}
+.controls select{max-width:160px}.controls .voice-tag{font-size:10px;color:#ceead7}
+.caption-subtitle{bottom:17%;font-family:"Apple SD Gothic Neo","Noto Sans CJK KR",sans-serif;word-break:keep-all;overflow-wrap:normal}
+@media(hover:none){.reel{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0);bottom:10px!important;padding:9px 10px!important}}
+@media(max-width:800px){.reel{width:calc(100vw - 12px);bottom:6px!important}.controls{flex-wrap:wrap!important;gap:5px}.controls select{max-width:48%;flex:1}.controls button{height:32px!important}.controls .spacer{display:none}}
+body.render .shell,body.render .screen-area,body.render .stage-frame{width:1920px!important;height:1080px!important;position:absolute!important;inset:0}
+body.render #stage{width:1920px!important;height:1080px!important}
+body.render .reel{display:none!important}
