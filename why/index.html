@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="theme-color" content="#123E36"><meta name="description" content="왜 지금 마음챙김인가? 약사의 전문성을 강화하는 약국 상담 플랫폼 브랜드 필름">
+ <title>왜 지금, 마음챙김인가? | 브랜드 필름</title>
+ <link rel="icon" type="image/png" href="../v1/brand-logo-icon.png"><link rel="apple-touch-icon" href="../v1/brand-logo-icon.png">
+ <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+ <main class="cinema" id="cinema" aria-label="마음챙김 브랜드 필름">
+  <svg id="screen" viewBox="0 0 1600 900" role="img" aria-label="마음챙김 약사 전문성 브랜드 영상" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div id="caption" class="caption" hidden></div>
+  <div id="hoverZone" class="hover-zone" aria-hidden="true"></div>
+  <div id="controls" class="controls" aria-label="영상 재생 컨트롤">
+   <button id="toggle" aria-label="재생 일시정지">▶</button><button id="back" aria-label="이전 장면">‹</button><button id="forward" aria-label="다음 장면">›</button>
+   <div class="timing"><div class="seektrack" id="track" role="slider" tabindex="0" aria-label="영상 재생 위치" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="progress"></span></div><div class="seekmeta"><span id="sceneTitle">브랜드 필름</span><span id="clock">00:00 / 03:21</span></div></div>
+   <button id="sub" aria-label="자막 켜기" aria-pressed="false">▤</button><button id="fullscreen" aria-label="전체 화면">⛶</button><button id="scenesBtn" aria-label="컷 목록">☷</button>
+  </div>
+ </main>
+ <dialog class="choice-dialog" id="choice" aria-labelledby="choiceTitle" aria-describedby="choiceDescription">
+  <div class="choice-inner">
+   <img src="../v1/brand-logo-icon.png" class="logo" alt="마음챙김 로고">
+   <p class="eyebrow">THE VALUE OF PHARMACISTS</p>
+   <h1 id="choiceTitle">약사의 전문성이<br>더 중요해지는 시대.</h1>
+   <p id="choiceDescription">왜 지금 마음챙김이 필요할까요?<br>원하시는 브랜드 필름을 선택하세요.</p>
+   <div class="choices">
+    <button class="selection primary" id="selectShort"><span class="selection-icon">✦</span><span class="selection-copy"><strong>핵심 광고</strong><small id="shortDuration">13컷 · 약 1분 30초</small><span>상담의 가치를 짧고 강하게</span></span><span class="arrow">↗</span></button>
+    <button class="selection" id="selectFull"><span class="selection-icon">◉</span><span class="selection-copy"><strong>전체 브랜드 필름</strong><small id="fullDuration">18컷 · 약 3분 21초</small><span>문제 제기부터 마음챙김의 해법까지</span></span><span class="arrow">↗</span></button>
+   </div>
+   <p class="preview-notice">모션 디자인 검토용 시안 · Moonjung 내레이션은 제작 전</p>
+  </div>
+ </dialog>
+ <dialog class="choice-dialog end-dialog" id="ending" aria-labelledby="endTitle"><div class="choice-inner">
+   <img src="../v1/brand-logo-icon.png" class="logo" alt="">
+   <p class="eyebrow">YOUR PHARMACY. YOUR EXPERTISE.</p>
+   <h2 id="endTitle">약사의 전문성이<br>이어지는 약국.</h2><p class="end-note">마음챙김과 함께 시작해 보세요.</p>
+   <div class="choices"><button class="selection primary" id="replay"><span class="selection-icon">↻</span><span class="selection-copy"><strong>다시 보기</strong><span>방금 선택한 필름을 처음부터</span></span><span class="arrow">↗</span></button><button class="selection" id="choose"><span class="selection-icon">☷</span><span class="selection-copy"><strong>다른 내용 선택</strong><span>핵심 광고 / 전체 브랜드 필름</span></span><span class="arrow">↗</span></button></div>
+  </div></dialog>
+ <dialog id="sceneDialog" class="scene-dialog" aria-labelledby="indexTitle"><div class="index-head"><strong id="indexTitle">장면 이동</strong><button id="closeIndex" aria-label="닫기">×</button></div><div id="sceneOptions" class="scene-options"></div></dialog>
+ <script src="./data.js"></script><script src="./art.js"></script><script src="./player.js"></script>
+</body>
+</html>
