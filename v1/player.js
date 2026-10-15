@@ -26,7 +26,7 @@ function requestNarration(){
    }
   }
  }).catch(e=>{
-  if(e?.name==='NotAllowedError'&&!voiceUserGesture){
+  if(e?.name==='NotAllowedError'){
    // Continue playing the visual timeline; show an explicit, accessible
    // one-tap action to allow sound. Do not retry forbidden audio every frame.
    isMuted=true;audio.muted=true;audio.pause();
@@ -130,7 +130,9 @@ function frame(now){
  if(!playing)return;
  const t=baseTime+(now-baseClock)/1000;
  if(t>=totalTime-.015){
-  render(totalTime-.001);playing=false;audio.pause();$('#play').textContent='▶ 다시 재생';return;
+  render(totalTime-.001);playing=false;audio.pause();$('#play').textContent='▶ 다시 재생';
+  if(!document.body.classList.contains('render')&&!$('#endDialog').open){$('#endDialog').showModal()}
+  return;
  }
  render(t);syncAudio();requestAnimationFrame(frame);
 }
@@ -222,9 +224,38 @@ window.__SWITCH_MODE=which=>{playing=false;audio.pause();buildPlaylist(which)};
 window.__PLAY=togglePlay;
 buildPlaylist(new URLSearchParams(location.search).get('mode')==='highlights'?'highlights':'all');buildIndex();
 if(new URLSearchParams(location.search).has('render'))document.body.classList.add('render');
-// Start the entire 63-cut visual on the first visit, without a play click.
-// ?render stays paused for deterministic capture; ?autoplay=0 is opt-out.
-if(!new URLSearchParams(location.search).has('render')&&
-   new URLSearchParams(location.search).get('autoplay')!=='0'){
- requestAnimationFrame(()=>{if(!playing)togglePlay()});
+// Choice-first experience: always keep the first scene still until the
+// viewer explicitly selects one of the two narrated playlists.
+const startDialog=$('#startDialog'),endDialog=$('#endDialog');
+const shortDuration=sceneData.filter(s=>s.highlight).reduce((acc,s)=>acc+s.d,0);
+const fullDuration=sceneData.reduce((acc,s)=>acc+s.d,0);
+$('#highlightsDuration').textContent='21컷 · 약 '+Math.floor(shortDuration/60)+'분 '+Math.round(shortDuration%60)+'초';
+$('#allDuration').textContent='63컷 · 약 '+Math.floor(fullDuration/60)+'분 '+Math.round(fullDuration%60)+'초';
+function playSelection(choice){
+ // This runs *inside* the actual user click, so the narration play() call
+ // can use browser media activation (also on mobile Safari).
+ voiceUserGesture=true;
+ if(startDialog.open)startDialog.close();
+ if(endDialog.open)endDialog.close();
+ document.querySelector('.shell').classList.remove('start-pending');
+ playing=false;audio.pause();isMuted=false;audio.muted=false;
+ $('#muted').textContent='◖))';$('#muted').title='음성 끄기';hideAudioEnable();
+ buildPlaylist(choice);
+ togglePlay();
+ // Immediately request the audio while the click activation is in effect.
+ requestNarration();
+}
+$('#startHighlights').onclick=()=>playSelection('highlights');
+$('#startAll').onclick=()=>playSelection('all');
+$('#replayCurrent').onclick=()=>playSelection(mode);
+$('#chooseAgain').onclick=()=>{
+ endDialog.close();playing=false;audio.pause();
+ buildPlaylist('all');document.querySelector('.shell').classList.add('start-pending');
+ startDialog.showModal();
+};
+startDialog.addEventListener('cancel',event=>event.preventDefault());
+const isRender=new URLSearchParams(location.search).has('render');
+if(!isRender){
+ document.querySelector('.shell').classList.add('start-pending');
+ startDialog.showModal();
 }
