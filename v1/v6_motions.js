@@ -149,7 +149,8 @@ function scene06(t,s){
   b+=v6Line(d[2],d[3],...center,t,.6+i*.44,3.5+i*.4,V6_E.sage,4);
   b+=v6Node(d[2],d[3],d[1],d[0],t,i,{size:78,labelSize:23});
  });
- b+=v6Badge(623,762,'서류 확인 후 승인 검토',t,4.7,{w:435,icon:'shield'});
+ // Keep the callout in the empty upper gap, outside both lower document labels.
+ b+=v6Badge(601,251,'서류 확인 후 승인 검토',t,4.7,{w:435,icon:'shield'});
  return b;
 }
 function scene08(t,s){
@@ -390,17 +391,30 @@ function scene29(t,s){
 }
 function scene30(t,s){
  let b=v6Base(s,t,false,'상담 수락 이후 복용 목적·불편사항·기존 복용약을 확인합니다');
+ // Distinct, staggered conversation cards; connectors use the whitespace
+ // between bubble corners, never a horizontal underline beneath the text.
  const bubbles=[
-  ['고객','복용 목적을 상담하고 싶어요','user',275,325],
-  ['약사','현재 복용 중인 약이 있나요?','pharmacist',745,435],
-  ['고객','기존 복용제품을 알려드릴게요','user',274,555],
-  ['약사','확인 후 함께 검토하겠습니다','pharmacist',745,681]];
+  ['고객','복용 목적을 상담하고 싶어요','user',225,292],
+  ['약사','현재 복용 중인 약이 있나요?','pharmacist',905,430],
+  ['고객','기존 복용제품을 알려드릴게요','user',225,568],
+  ['약사','확인 후 함께 검토하겠습니다','pharmacist',905,706]
+ ];
+ const routes=[
+  'M869 365C949 374 849 448 904 467',
+  'M906 494C840 510 944 602 868 609',
+  'M869 642C945 661 846 754 905 755'
+ ];
+ routes.forEach((path,i)=>{
+  b+=P(path,'#D6EBE0',8);
+  b+=P(path,'#32A98E',5,'data-route-progress="'+smooth(t,1.3+i*1.05,2.5+i*1.05)+'"');
+ });
+ // Small traveling junctions reinforce the dialogue flow without obscuring words.
  bubbles.forEach((z,i)=>{
-  const [who,txt,ic,x,y]=z,p=smooth(t,.7+i*1.05,1.45+i*1.05);
+  const [who,txt,ic,x,y]=z;
   b+=reveal(G(rr(0,0,643,104,46,i%2?'#DCEDE4':'#FFFFFF','#B4D7C4',1.4,'filter="url(#shadow)"')+
     iconAt(ic,21,25,52,V6_E.forest)+
-    v6Text(99,38,who,18,V6_E.sage,750,490)+v6Text(99,78,txt,22,V6_E.ink,780,515),x,y),t,.7+i*.83,.65);
-  if(i<3)b+=v6Line(x+350,y+112,bubbles[i+1][3]+130,bubbles[i+1][4]-22,t,1.3+i*.79,2+i*.79,V6_E.aqua,3);
+    v6Text(99,38,who,18,V6_E.sage,750,490)+
+    v6Text(99,78,txt,22,V6_E.ink,780,515),x,y),t,.7+i*.87,.65);
  });
  return b;
 }

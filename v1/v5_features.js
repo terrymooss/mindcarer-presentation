@@ -78,8 +78,10 @@ function cutQuest(s,t){
   ['상담','chat',1203,628],['설계','capsule',842,643],['조제·배송','truck',492,622],['재구독','calendar',158,632]
  ];
  let path='M158 330C320 292 395 292 493 322S715 370 842 345S1092 300 1203 319C1455 400 1438 575 1203 628S981 663 842 643S618 612 492 622S270 648 158 632';
- b+=P(path,'#CBDED4',16,'stroke-dasharray="1 23"');
- b+=pathDraw(path,2400,t,.55,7.4,'#3AA58F',7);
+ // A true length-measured path, never an arbitrary hardcoded SVG dash length.
+ // The progress line is fully green at the end, with no pale dotted trail.
+ b+=P(path,'#D8EBE1',12);
+ b+=P(path,'#239F83',12,'data-route-progress="'+smooth(t,.55,6.8)+'"');
  steps.forEach((step,i)=>{
   const [label,ic,x,y]=step,p=smooth(t,.52+i*.72,1.2+i*.72);
   b+=G(cc(0,0,76,'#fff','stroke="#b2dace" stroke-width="2.4" filter="url(#shadow)"')+
@@ -240,7 +242,7 @@ function cutPhone(s,t,kind){
  const body=rr(-151,-284,302,572,54,dark?'#10232a':'#1D4040',dark?'#4EA78E':'#446C64',4,'filter="url(#shadow)"')+
       rr(-133,-264,266,525,39,'#F6F9F4')+
       rr(-48,-252,96,13,7,'#365448')+
-      iconAt(kind==='ble'?'bluetooth':kind==='qr'?'qr':'phone',-57,-139,115,CX.forest,1.5)+
+      (kind==='qr'?'<image x="-72" y="-151" width="144" height="144" href="./qr-pulsenall.svg" preserveAspectRatio="xMidYMid meet"/>':iconAt(kind==='ble'?'bluetooth':'phone',-57,-139,115,CX.forest,1.5))+
       L(0,35,kind==='ble'?'PASS 연결':kind==='qr'?'보안 링크':'고객 연결',29,CX.forest,850,'text-anchor="middle"')+
       L(0,71,kind==='ble'?'동의 확인':kind==='qr'?'리포트 미리보기':'SMS · QR',21,CX.gray,650,'text-anchor="middle"')+
       rr(-106,111,212,53,25,'#0D625A')+
@@ -327,8 +329,11 @@ function cutEnd(s,t){
  b+=reveal(koreanText('마음챙김과 함께 시작하세요.',89,477,640,34,'#E2F5EB',650,1.2,2).svg,t,1.2,.75);
  b+=reveal(G(rr(0,0,555,92,47,'#E4F3EA')+iconAt('pharmacy',32,22,50,CX.forest)+
   L(100,60,'pulsenall.com',33,CX.forest,850),84,609),t,3,.78);
- b+=reveal(G(iconAt('qr',0,0,59,'#D4F6E5')+
-    L(77,40,'협력 약국 · 약사 파트너 신청',24,'#D4F6E5',750),94,735),t,4.2,.75);
+ // Scannable QR for https://pulsenall.com (includes quiet zone).
+ b+=reveal(G(rr(0,0,174,174,17,'#FFFFFF')+
+    '<image x="10" y="10" width="154" height="154" href="./qr-pulsenall.svg" preserveAspectRatio="xMidYMid meet"/>',642,580),t,3.6,.73);
+ b+=reveal(L(94,784,'협력 약국 · 약사 파트너 신청',24,'#D4F6E5',750),t,4.2,.75);
+ b+=reveal(L(645,792,'QR 스캔 · 서비스 바로가기',18,'#D4F6E5',700),t,4.5,.68);
  return b;
 }
 const V5_SPECIAL={

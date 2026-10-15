@@ -26,6 +26,15 @@ function polishSvgLayers(stage){
   if(firstForeground)stage.insertBefore(layer,firstForeground);
   else stage.appendChild(layer);
   connectors.forEach(el=>layer.appendChild(el));
-  return {paths:connectors.length};
+  // Use the browser's measured SVG length, not estimates. The last frame
+  // becomes solid green all the way to the final node.
+  const routes=stage.querySelectorAll('path[data-route-progress]');
+  routes.forEach(el=>{
+    const progress=Math.max(0,Math.min(1,Number(el.getAttribute('data-route-progress'))||0));
+    const length=el.getTotalLength()+0.5;
+    el.style.strokeDasharray=String(length)+' '+String(length);
+    el.style.strokeDashoffset=String((1-progress)*length);
+  });
+  return {paths:connectors.length,measuredRoutes:routes.length};
 }
 window.__POLISH_LAYERS=polishSvgLayers;
