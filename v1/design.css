@@ -89,3 +89,9 @@ html,body{height:100%;overflow:hidden;background:#F8F7F2}
 body.render .shell,body.render .screen-area,body.render .stage-frame{width:1920px!important;height:1080px!important;position:absolute!important;inset:0}
 body.render #stage{width:1920px!important;height:1080px!important}
 body.render .reel{display:none!important}
+
+/* Autoplay sound permission fallback: visible only if the browser blocks narration. */
+#autoplayVoiceHint[hidden]{display:none!important}
+#autoplayVoiceHint{position:fixed;right:22px;top:20px;z-index:200;border:1px solid #a5ddc1;background:#0d433ce8;color:#effff4;border-radius:30px;padding:13px 19px;font-family:inherit;font-weight:700;font-size:16px;line-height:1.2;box-shadow:0 8px 25px #021f2044;cursor:pointer;backdrop-filter:blur(9px)}
+#autoplayVoiceHint:hover,#autoplayVoiceHint:focus-visible{background:#116451;outline:2px solid #a6e5c5;outline-offset:2px}
+@media(max-width:600px){#autoplayVoiceHint{top:10px;right:10px;font-size:13px;padding:10px 13px}}

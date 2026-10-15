@@ -5,6 +5,37 @@ const sceneData=window.MINDCARER_SCENES,chapterNames=window.MINDCARER_CHAPTERS;
 let mode='all',playlist=[],totalTime=0,playing=false,globalTime=0,sceneIndex=-1;
 let baseTime=0,baseClock=0,isMuted=false,showSub=false,currentAudioScene=null;
 let loadToken=0,previousChapter=0,ready=true;
+// Visual animation runs independently from narration. Browsers may forbid audio
+// until the viewer explicitly interacts, even when animation may autoplay.
+let audioPlayPending=false,voiceUserGesture=false;
+function showAudioEnable(){const e=$('#autoplayVoiceHint');if(e)e.hidden=false;}
+function hideAudioEnable(){const e=$('#autoplayVoiceHint');if(e)e.hidden=true;}
+function requestNarration(){
+ if(!playing||isMuted||audioPlayPending||!audio.paused)return;
+ audioPlayPending=true;
+ let promise;
+ try{promise=audio.play()}catch(e){promise=Promise.reject(e)}
+ Promise.resolve(promise).then(()=>{
+  // Some browsers reset currentTime to zero when playback is newly unlocked.
+  // Seek after the play promise resolves, keeping narration at the current cut.
+  if(playing&&!isMuted&&audio.readyState>=1){
+   const {s,local}=locate(globalTime);
+   if(currentAudioScene===s.id&&local<s.voice&&
+      Math.abs(audio.currentTime-local)>0.35){
+    try{audio.currentTime=Math.min(local,Math.max(0,s.voice-.03))}catch(e){}
+   }
+  }
+ }).catch(e=>{
+  if(e?.name==='NotAllowedError'&&!voiceUserGesture){
+   // Continue playing the visual timeline; show an explicit, accessible
+   // one-tap action to allow sound. Do not retry forbidden audio every frame.
+   isMuted=true;audio.muted=true;audio.pause();
+   $('#muted').textContent='✕';$('#muted').title='음성 켜기';
+   showAudioEnable();
+  }
+ }).finally(()=>{audioPlayPending=false});
+}
+
 const cutID=n=>String(n).padStart(2,'0');
 const fmt=n=>String(Math.floor(n/60)).padStart(2,'0')+':'+String(Math.floor(n%60)).padStart(2,'0');
 function buildPlaylist(which='all'){
@@ -85,15 +116,15 @@ function syncAudio(force=false){
   audio.addEventListener('loadedmetadata',()=>{
     if(token!==loadToken||currentAudioScene!==s.id)return;
     if(desired>0){try{audio.currentTime=desired}catch(e){}}
-    if(playing&&local<s.voice)audio.play().catch(()=>{});
+    if(playing&&!isMuted&&local<s.voice)requestNarration();
   },{once:true});
  }else if(force&&audio.readyState>=1){
   const position=Math.min(local,s.voice);
   try{audio.currentTime=position}catch(e){}
  }
  audio.muted=isMuted;
- if(!playing||local>=s.voice)audio.pause();
- else if(!changed&&audio.paused)audio.play().catch(()=>{});
+ if(!playing||isMuted||local>=s.voice)audio.pause();
+ else if(!changed&&audio.paused)requestNarration();
 }
 function frame(now){
  if(!playing)return;
@@ -121,9 +152,14 @@ $('#play').onclick=togglePlay;
 $('#prev').onclick=()=>jumpCut(-1);
 $('#next').onclick=()=>jumpCut(1);
 $('#muted').onclick=()=>{
+ voiceUserGesture=true;
  isMuted=!isMuted;audio.muted=isMuted;
  $('#muted').textContent=isMuted?'✕':'◖))';$('#muted').title=isMuted?'음성 켜기':'음성 끄기';
+ if(isMuted)audio.pause();
+ else {hideAudioEnable();syncAudio(true);requestNarration()}
 };
+const voiceHint=$('#autoplayVoiceHint');
+if(voiceHint)voiceHint.onclick=()=>{if(isMuted)$('#muted').click();else hideAudioEnable()};
 $('#seek').oninput=e=>seek(Number(e.target.value),true);
 $('#mode').onchange=e=>{
  playing=false;audio.pause();$('#play').textContent='▶ 재생';
@@ -186,3 +222,9 @@ window.__SWITCH_MODE=which=>{playing=false;audio.pause();buildPlaylist(which)};
 window.__PLAY=togglePlay;
 buildPlaylist(new URLSearchParams(location.search).get('mode')==='highlights'?'highlights':'all');buildIndex();
 if(new URLSearchParams(location.search).has('render'))document.body.classList.add('render');
+// Start the entire 63-cut visual on the first visit, without a play click.
+// ?render stays paused for deterministic capture; ?autoplay=0 is opt-out.
+if(!new URLSearchParams(location.search).has('render')&&
+   new URLSearchParams(location.search).get('autoplay')!=='0'){
+ requestAnimationFrame(()=>{if(!playing)togglePlay()});
+}
